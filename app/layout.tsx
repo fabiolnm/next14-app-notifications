@@ -5,18 +5,20 @@ const roboto = Roboto({
   subsets: ['latin'],
 })
 
-import "./globals.css";
+import "./globals.css"
+import { CssBaseline } from '@mui/material'
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en">
+      <CssBaseline />
       <body className={roboto.className}>
         {children}
       </body>
     </html>
-  );
+  )
 }
