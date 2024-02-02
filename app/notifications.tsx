@@ -12,8 +12,16 @@ import NotificationsTable from './table'
 
 export function Notifications (props: any) {
   const [expanded, setExpanded] = useState<boolean>()
+  const [notifications, setNotifications] = useState<any[]>([])
 
   useEffect(() => {
+    async function fetchNotifications() {
+      const res = await fetch('/api/notifications')
+      const data = await res.json()
+      setNotifications(data)
+    }
+    fetchNotifications()
+
     setExpanded(Boolean(window.localStorage.getItem('notificationsOpen')))
   }, [setExpanded])
 
@@ -44,7 +52,7 @@ export function Notifications (props: any) {
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <NotificationsTable {...props} />
+            <NotificationsTable notifications={notifications} />
           </AccordionDetails>
         </Accordion>
       )}

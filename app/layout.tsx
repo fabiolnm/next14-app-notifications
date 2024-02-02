@@ -7,7 +7,6 @@ const roboto = Roboto({
 
 import "./globals.css"
 import { CssBaseline } from '@mui/material'
-import { getNotifications } from './data'
 import { Notifications } from "./notifications"
 
 export default async function RootLayout({
@@ -15,14 +14,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const notifications = await getNotifications()
-
   return (
     <html lang="en">
       <CssBaseline />
       <body className={roboto.className} suppressHydrationWarning>
         {children}
-        <Notifications notifications={notifications} />
+        <Notifications />
       </body>
     </html>
   )
