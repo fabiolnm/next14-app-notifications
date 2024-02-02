@@ -1,24 +1,22 @@
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
+import Link from 'next/link'
+import { Urgency } from './urgency'
 
 const columns: GridColDef[] = [
   {
     field: 'urgency',
     width: 20,
-    renderCell: ({ row: { urgency }}) => (
-      urgency === 'HIGH' ? '🔴' : (
-        urgency === 'MEDIUM' ? '🟡' : '🔵'
-      )
-    )
+    renderCell: ({ row: { urgency }}) => <Urgency urgency={urgency } />
   },
   {
     field: 'category',
     width: 100,
     renderCell: ({ id, row: { category }}) => (
-      <>
+      <Link href={`/notifications/${id}`} style={{ textDecoration: 'underline' }}>
         #{id}
         <br />
         {category}
-      </>
+      </Link>
     )
   },
   { field: 'title', width: 200 },
