@@ -1,5 +1,9 @@
+import Notifications from "./notifications";
+
 export default function Home() {
   return (
-    <>Hello World!</>
+    <div>
+      <Notifications />
+    </div>
   )
 }
