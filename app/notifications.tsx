@@ -7,10 +7,10 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 
 import AccordionDetails from '@mui/material/AccordionDetails'
 import Typography from '@mui/material/Typography'
-import { Button } from '@mui/material'
-import { Add, Remove } from '@mui/icons-material'
+import { Remove } from '@mui/icons-material'
+import NotificationsTable from './table'
 
-export default function AccordionExpandIcon() {
+export function Notifications (props: any) {
   const [expanded, setExpanded] = useState<boolean>()
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function AccordionExpandIcon() {
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            Content
+            <NotificationsTable {...props} />
           </AccordionDetails>
         </Accordion>
       )}
